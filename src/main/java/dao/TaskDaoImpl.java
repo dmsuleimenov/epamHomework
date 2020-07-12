@@ -33,7 +33,6 @@ public class TaskDaoImpl implements TaskDao {
             preparedStatement.setDate(4, JDBCUtils.getSQLDate(task.getTargetDate()));
             preparedStatement.setBoolean(5, task.getStatus());
             preparedStatement.setString(6,task.getGoal_title());
-            System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (SQLException exception) {
             JDBCUtils.printSQLException(exception);
@@ -47,7 +46,6 @@ public class TaskDaoImpl implements TaskDao {
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_TASK_BY_ID);) {
             preparedStatement.setLong(1, taskid);
             preparedStatement.setInt(2, user_id);
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {

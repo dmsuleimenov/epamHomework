@@ -87,7 +87,7 @@ public class TaskController extends HttpServlet {
     }
 
     private void list(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
+            throws IOException, ServletException {
 
         HttpSession session=request.getSession(false);
         int user_id =(Integer) session.getAttribute("user_id");
@@ -111,7 +111,7 @@ public class TaskController extends HttpServlet {
     }
 
     private void showTaskEditForm(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, ServletException, IOException {
+            throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         HttpSession session=request.getSession(false);
         int user_id =(Integer) session.getAttribute("user_id");
@@ -173,7 +173,7 @@ public class TaskController extends HttpServlet {
     }
 
     private void showGoalEditForm(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, ServletException, IOException {
+            throws  ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         HttpSession session=request.getSession(false);
         int user_id =(Integer) session.getAttribute("user_id");
@@ -215,10 +215,12 @@ public class TaskController extends HttpServlet {
     }
 
     private void addGoalToTask(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws  IOException, ServletException {
         String goal_title = request.getParameter("goal_title");
         HttpSession session=request.getSession(false);
         session.setAttribute("goal_title", goal_title);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("task/task-form.jsp");
+        dispatcher.forward(request, response);
     }
 
 

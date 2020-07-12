@@ -20,7 +20,7 @@ public class LoginController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws  IOException {
         response.sendRedirect("login/login.jsp");
     }
 
@@ -47,7 +47,8 @@ public class LoginController extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("task/main-page.jsp");
                 dispatcher.forward(request, response);
             } else {
-                System.out.println("Wrong username or password");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("login/login.jsp");
+                dispatcher.forward(request, response);
 
             }
 

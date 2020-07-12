@@ -1,7 +1,5 @@
 package model;
 
-import java.time.LocalDate;
-
 public class Goal {
     private Long id;
     private String title;
